@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Explore</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>/* General page styling */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #eafaf1; /* Light greenish background */
+    }
+    #main {
+      padding-top: 100px;
+    }
+    
+    #headex h1 {
+      font-size: 150px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    
+    /* General container styling */
+    .container {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 50px auto;
+      background: linear-gradient(135deg, #f0fdf4, #d3f9d8); /* Soft green gradient */
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+    
+    /* Hover effect for container */
+    .container:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Left section styling */
+    .left-section {
+      flex: 1;
+      background: linear-gradient(135deg, #2ecc71, #27ae60); /* Green gradient for vibrant feel */
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      position: relative;
+      transition: background 0.3s ease;
+    }
+    
+    /* Hover effect for left section */
+    .left-section:hover {
+      background: linear-gradient(135deg, #27ae60, #1abc9c); /* Darker gradient */
+    }
+    
+    .left-section::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.2);
+      top: -50%;
+      left: -50%;
+      transform: rotate(45deg);
+      border-radius: 50%;
+    }
+    
+    .left-section h1 {
+      z-index: 1;
+      font-size: 3em;
+      font-weight: 700;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      margin-bottom: 20px;
+      line-height: 1.2;
+      animation: fadeIn 1s ease-out forwards;
+    }
+    
+    /* Profile image styling */
+    .profile-image {
+      max-width: 500px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      z-index: 1;
+      animation: scaleUp 1s ease-out forwards;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    /* Hover effect for profile image */
+    .profile-image:hover {
+      transform: scale(1.05); /* Slight zoom */
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Right section styling */
+    .right-section {
+      flex: 1;
+      padding: 50px;
+      background-color: #f9fdf8; /* Soft green background */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      transition: background 0.3s ease;
+    }
+    
+    /* Hover effect for right section */
+    .right-section:hover {
+      background-color: #ecf9ef; /* Slight color change on hover */
+    }
+    
+    .right-section h1 {
+      text-transform: uppercase;
+      font-size: 2em;
+      font-weight: 600;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      color: #2c3e50;
+      background: linear-gradient(135deg, #82e0aa, #2ecc71); /* Green gradient for heading */
+      transition: background 0.3s ease;
+    }
+    
+    /* Hover effect for right section heading */
+    .right-section h1:hover {
+      background: linear-gradient(135deg, #27ae60, #16a085); /* Darker gradient */
+    }
+    
+    .right-section p {
+      font-size: 1.2em;
+      color: #2c3e50;
+      margin-bottom: 30px;
+      animation: slideIn 1s ease-out forwards;
+    }
+    
+    /* Decorative elements */
+    .right-section::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: -50px;
+      width: 300px;
+      height: 300px;
+      background: rgba(46, 204, 113, 0.3);
+      border-radius: 50%;
+      z-index: 0;
+    }
+    
+    .right-section::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      right: -80px;
+      width: 200px;
+      height: 200px;
+      background: rgba(82, 190, 128, 0.3);
+      border-radius: 50%;
+      z-index: 0;
+    }
+    
+    /* Box styling */
+    .list-box {
+      margin-left: 350px;
+      background-color: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      width: 800px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    /* Hover effect for list box */
+    .list-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    .list-box::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: -20%;
+      width: 140%;
+      height: 140%;
+      background: rgba(46, 204, 113, 0.3); /* Light green overlay */
+      border-radius: 50%;
+      transform: rotate(-30deg);
+    }
+    
+    /* List styling */
+    .list-box h2 {
+      font-weight: 900;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+      color: #27ae60; /* Green for heading */
+      transition: color 0.3s ease;
+    }
+    
+    /* Hover effect for list box heading */
+    .list-box h2:hover {
+      color: #16a085; /* Darker green on hover */
+    }
+    
+    .list-box ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    .list-box ul li {
+      padding: 15px;
+      margin: 10px 0;
+      background: linear-gradient(135deg, #1abc9c, #16a085); /* Green gradient for list items */
+      color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    /* Hover effect for list items */
+    .list-box ul li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Cards styling */
+    .container5 {
+      width: 90%;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .cards {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 30%;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .card .content {
+      padding: 20px;
+    }
+    
+    .card h2 {
+      font-size: 1.5rem;
+      color: #27ae60; /* Green heading */
+    }
+    
+    .card .date {
+      font-size: 0.9rem;
+      color: #888;
+    }
+    
+    .card p {
+      font-size: 1rem;
+      color: #555;
+    }
+    
+    .read-more {
+      color: #16a085;
+      font-weight: bold;
+    }
+    
+    .read-more:hover {
+      color: #1abc9c;
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .list-box {
+        width: 90%;
+      }
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div id="main">
+    <div id="headex">
+    <h1>EXPLORE</h1>
+    </div>
+    <div class="container">
+      <div class="left-section">
+        <img src="./anxiety.jpg" alt="Smiling person" class="profile-image">
+      </div>
+      <div class="right-section">
+        <h1>Anxiety disorder</h1>
+        <p>Anxiety disorder is a mental health condition characterized by excessive, persistent worry, fear, or nervousness that interferes with daily activities. While it's normal to experience anxiety in certain situations, such as before a test or during a stressful event, people with anxiety disorders experience anxiety more frequently or intensely than warranted by the situation.</p>
+      </div>
+    </div>
+    <div class="list-box">
+      <h2>Techniques to overcome anxiety disorder</h2>
+      <ul>
+        <li><b>Medication</b><br>
+          In some cases, medication may be prescribed by a doctor to manage symptoms. Common types of medications used for anxiety include:
+        </li>
+        <li><b>Selective Serotonin Reuptake Inhibitors (SSRIs):</b><br> Antidepressants that can reduce anxiety.
+          <b>Benzodiazepines:</b> Used for short-term relief but may lead to dependence if used long-term.</li>
+        <li><b>Mindfulness and Relaxation Techniques</b><br>
+          Practicing mindfulness can help ground you in the present moment and reduce anxious thoughts. Techniques include:
+          </li>
+        <li><b>Deep breathing:</b> <br> Slowing your breath to calm the nervous system.
+        </li>
+        <li>Meditation: Focusing on the present moment to reduce stress.
+          Progressive muscle relaxation: Systematically tensing and relaxing muscle groups to relieve tension.</li>
+      </ul>
+    </div>
+    
+    <div class="container">
+      <div class="left-section">
+        <img src="./depression.jpg" alt="Smiling person" class="profile-image">
+      </div>
+      <div class="right-section">
+        <h1>DEPRESSION</h1>
+        <p>Depression is a common and serious mental health disorder characterized by persistent feelings of sadness, hopelessness, and a lack of interest or pleasure in activities that were once enjoyable. It affects how a person thinks, feels, and behaves, often leading to various emotional and physical problems. Depression can impact daily functioning, relationships, and overall quality of life.</p>
+      </div>
+    </div>
+    
+  <div class="list-box">
+    <h2>Treatment for Depression:</h2>
+    
+    <ul>
+      <li>🌟 <b>Psychotherapy:</b> Also known as "talk therapy," this involves working with a mental health professional to explore feelings and find ways to cope.</li>
+      <li>✨ <b>Medication:</b> In some cases, medication may be prescribed by a doctor to manage symptoms. Common types of medications used for anxiety include:</li>
+      <li>💡 <b>Selective Serotonin Reuptake Inhibitors (SSRIs):</b> Antidepressants that can reduce anxiety.</li>
+      <li>🎨 <b>Mindfulness and Relaxation Techniques:</b> Practicing mindfulness can help ground you in the present moment and reduce anxious thoughts. Techniques include:</li>
+      <li>🚀 <b>Deep breathing:</b> Slowing your breath to calm the nervous system.</li>
+      <li>🚀 <b><Electroconvulsive Therapy (ECT):</b> In severe or treatment-resistant cases, ECT may be considered to help relieve symptoms</li>
+    </ul>
+  </div>
+    
+    <div class="container">
+      <div class="left-section">
+        <img src="./ptsd.jpg" alt="Smiling person" class="profile-image">
+      </div>
+      <div class="right-section">
+        <h1>Post-Traumatic Stress Disorder (PTSD)</h1>
+        <p>Post-Traumatic Stress Disorder (PTSD) is a mental health condition that can develop after experiencing or witnessing a traumatic event. Traumatic events can include, but are not limited to, natural disasters, combat, sexual or physical assault, serious accidents, or the sudden death of a loved one. PTSD can cause long-lasting psychological and physical symptoms that interfere with daily functioning.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="list-box">
+    <h2>Treatment for PTSD:</h2>
+    <ul>
+      <li>🌟 <b>Psychotherapy:</b> Also known as "talk therapy," this involves working with a mental health professional to explore feelings and find ways to cope.</li>
+      <li>✨  <b>Prolonged Exposure Therapy (PE):</b> <br> Involves safely confronting trauma-related memories, feelings, and situations to reduce their power over the individual.
+        Eye Movement Desensitization and Reprocessing (EMDR): Combines focused eye movements with recalling traumatic experiences to help the brain process and integrate traumatic memories.
+        Trauma-Focused Cognitive Behavioral Therapy (TF-CBT): A specific type of CBT designed to address trauma-related symptoms, particularly in children and adolescents.
+        <li>🎨 <b>Antidepressants:</b> Such as selective serotonin reuptake inhibitors (SSRIs) like sertraline (Zoloft) or paroxetine (Paxil), which are often prescribed to reduce symptoms of depression and anxiety.</li>
+      <li>🚀 <b>Joining a PTSD support group or group therapy:</b> <br> Joining a PTSD support group or group therapy can help individuals share their experiences and feel less isolated.
+        Self-care and Coping Strategies:</b>
+        </li>
+      <li>🚀 <b>Deep breathing:</b> Slowing your breath to calm the nervous system.</li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="left-section">
+      <img src="./schizophrenia.jpg" alt="Smiling person" class="profile-image">
+    </div>
+    <div class="right-section">
+      <h1>Schizophrenia</h1>
+      <p>Schizophrenia is a chronic and severe mental disorder that affects how a person thinks, feels, and behaves. People with schizophrenia often experience psychotic symptoms, which may include delusions (false beliefs), hallucinations (hearing or seeing things that aren't there), disorganized thinking, and severely impaired functioning in everyday life. Schizophrenia is typically diagnosed in late adolescence or early adulthood and can significantly impact an individual's quality of life if not properly managed.</p>
+    </div>
+  </div>
+</div>
+
+<div class="list-box">
+  <h2>Treatment for Schizophrenia:</h2>
+  <ul>
+    <li>🌟 <b>Psychotherapy:</b> Also known as "talk therapy," this involves working with a mental health professional to explore feelings and find ways to cope.</li>
+    <li>💡 <b>Cognitive Behavioral Therapy (CBT):</b> Helps individuals manage symptoms like delusions or hallucinations by challenging distorted thinking patterns.</li>
+    <li>🎨 <b>Cognitive Remediation Therapy:</b> Focuses on improving cognitive skills like memory and attention, which can help with day-to-day functioning.</li>
+    <li>✨<b>Family Therapy:</b> Educates family members about the disorder and offers support, improving communication and reducing stress within the household.</li>
+    <li>🚀 <b>Social and Vocational Rehabilitation:</b> Helps individuals with practical skills to manage daily life and maintain employment.</li>
+  </ul>
+</div>
+</div>
+  <nav class="navbar navbar-expand-lg  fixed-top">
+    <div class="container-fluid  mx-3">
+      <img src="./Untitled3_20240927195736.png" alt="" id="logo" srcset="">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mx-3 ml-5" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2">
+          <li class="nav-item">
+            <a class="nav-link fs-5 " aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fs-5 " href="login.html">Registration</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fs-5 " href="explore.html">Explore</a>
+          </li>
+
+
+          <!-- Add this new list item for the Contact link -->
+          <li class="nav-item">
+            <a class="nav-link fs-5 " href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container5">
+    <h1>EXPLORE OUR ARTICLES</h1>
+    <div class="cards">
+        <div class="card">
+            <img src="./article.avif" alt="The Mental Health Benefits of Volunteering">
+            <div class="content">
+                <h2>The Mental Health Benefits of Volunteering</h2>
+                <p class="date">August 19, 2024</p>
+                <p>Finding Purpose, Fulfillment, and Community.</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="./article.avif" alt="Reconnecting with Old Friends and Family">
+            <div class="content">
+                <h2>Reconnecting with Old Friends and Family: The Power of Forgiveness</h2>
+                <p class="date">August 12, 2024</p>
+                <p>The importance of reconnecting with loved ones.</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="./article.avif" alt="Overcoming Isolation">
+            <div class="content">
+                <h2>The Social Cure: Overcoming Isolation for Better Mental Health</h2>
+                <p class="date">August 05, 2024</p>
+                <p>How to improve mental health by overcoming isolation.</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="./article.avif" alt="Setting Healthy Boundaries">
+            <div class="content">
+                <h2>Setting Healthy Boundaries: A Guide to Prioritizing Your Well-Being</h2>
+                <p class="date">July 29, 2024</p>
+                <p>Focusing on well-being by setting boundaries.</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="./article.avif" alt="Find Peace and Relax Your Mind and Body">
+            <div class="content">
+                <h2>Find Peace and Relax Your Mind and Body with these Movement and Physical Relaxation Techniques</h2>
+                <p class="date">July 22, 2024</p>
+                <p>Movement and relaxation techniques to relieve stress.</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="./article.avif" alt="Finding Support Groups for Mental Health">
+            <div class="content">
+                <h2>Finding Support Groups for Mental Health and Mental Illness: Tips from Karena and James</h2>
+                <p class="date">July 01, 2024</p>
+                <p>Tips on navigating mental health through support groups.</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+        </div>
+    </div>
+</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
